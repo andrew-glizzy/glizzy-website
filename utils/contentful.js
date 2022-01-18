@@ -22,8 +22,10 @@ const client = new ApolloClient({
 // QUERIES
 export const frontPagePosterQuery = gql`
     query {
-        frontPageBgPosterCollection (where: { title: "bg-poster-large-webp" }) {
+        frontPageBgPosterCollection {
             items {
+                isMobile
+                contentType
                 image {
                     url
                 }
@@ -36,6 +38,8 @@ export const frontPageAnimationQuery = gql`
         frontPageBgAnimationCollection {
             items {
                 title
+                isMobile
+                contentType
                 video {
                     url
                 }
