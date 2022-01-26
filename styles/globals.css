@@ -5,7 +5,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   min-width: 300px;
-  min-height: 821px;
+  min-height: 914px;
 }
 
 a {
@@ -37,6 +37,6 @@ a {
   font-family: "PTMonoBold";
   src: url("/fonts/pt-mono/pt_mono_bold_glizzy.ttf");
   font-style: bold;
-  font-weight: 821;
+  font-weight: 914;
   font-display: block;
 }

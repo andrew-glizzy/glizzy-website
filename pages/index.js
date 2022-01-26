@@ -10,20 +10,20 @@ import client, { frontPagePosterQuery, frontPageAnimationQuery } from "../utils/
 const Home = ({ mobilePosterUrl, desktopPosterUrl, mobileVideos, desktopVideos }) => {
   // TODO: figure out why the poster doesn't have the same coloring as the video
   // TODO: only show videos if phone is not in low battery mode
+  // TODO: remove arrow from video and use it as an image instead
 
-  const [showText, setShowText] = useState(false);
   const [posterUrl, setPosterUrl] = useState("");
   const [videos, setVideos] = useState(null);
-  const videoRef = useRef(null);
-
-  // TODO: remove arrow from video and use it as an image instead
-  // useEffect(() => {
-  //   console.log(videoRef.current?.offsetWidth, videoRef.current?.offsetHeight);
-  // }, [screenDimensions])
+  const [isMobile, setIsMobile] = useState(null);
+  const videoRef = useRef({});
 
   useEffect(() => {
+    // remove scrolling and rotation
+    document.body.style.overflow = "hidden";
+  
     // get if on mobile for optimal loading
     const onMobile = window.innerWidth < MOBILE_WIDTH;
+    setIsMobile(onMobile);
     setPosterUrl(onMobile ? mobilePosterUrl : desktopPosterUrl);
     setVideos(onMobile ? mobileVideos : desktopVideos);
   }, []);
@@ -32,8 +32,9 @@ const Home = ({ mobilePosterUrl, desktopPosterUrl, mobileVideos, desktopVideos }
     if (!videos) {
       return;
     }
+    setVideos(isMobile ? mobileVideos : desktopVideos);
     videoRef.current?.load();
-  }, [videos]);
+  }, [isMobile]);
 
   return (
     <div style={{ backgroundColor: colors.BACKGROUND }} className={styles.container}>
@@ -58,12 +59,13 @@ const Home = ({ mobilePosterUrl, desktopPosterUrl, mobileVideos, desktopVideos }
       <Media
         queries={{
           mobile: `all and (max-width: ${MOBILE_WIDTH}px)`,
-          desktop: `all and (min-width: ${MOBILE_WIDTH + 1}px)`
+          desktop: `all and (min-width: ${MOBILE_WIDTH + 1}px)`,
+          portrait: "screen and (orientation: portrait)",
+          landscape: "screen and (orientation: landscape)"
         }}
       >
         {matches => {
-          setVideos(matches.mobile ? mobileVideos : desktopVideos);
-          setPosterUrl(matches.mobile ? mobilePosterUrl : desktopPosterUrl);
+          setIsMobile(matches.mobile && matches.portrait);
           return null;
         }}
       </Media>
@@ -76,7 +78,6 @@ const Home = ({ mobilePosterUrl, desktopPosterUrl, mobileVideos, desktopVideos }
         width="100%"
         height="100%"
         ref={videoRef}
-        onLoadedData={() => setShowText(true)}
       >
         {videos && videos.map(v => <source src={v.video.url} type={v.contentType} key={v.video.url} />)}
       </video>
