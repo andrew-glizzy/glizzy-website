@@ -1,9 +1,181 @@
 .video {
   width: 100%;
-  height: 100%;
   position: absolute;
   object-fit: cover;
   display: block;
-  z-index: 10;
+  z-index: -1;
   overflow: hidden;
+}
+
+.container {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+.textContainer {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.logoContainer {
+  display: flex;
+  position: absolute;
+  top: 0;
+  justify-content: center;
+  align-items: flex-end;
+  overflow: hidden;
+  height: 50%;
+  width: 100%;
+  line-height: 60px;
+  text-align: center;
+}
+
+.sloganContainer {
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  height: 50%;
+  z-index: -1;
+}
+
+.shopContainer {
+  display: flex;
+  position: absolute;
+  top: 84%;
+}
+
+.logo {
+  display: inline-block;
+  font-size: 180px;
+  vertical-align: top;
+  font-family: GLIZZY;
+  text-align: center;
+  text-shadow: 0px 0px 25px #ffffff, 0px 0px 25px #ffffff, 0px 0px 25px #ffffff;
+  padding-bottom: 60px;
+}
+
+.slogan {
+  font-family: PTMonoBold;
+  font-size: 23px;
+  text-align: center;
+  padding-top: 25px;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-shadow: 0px 0px 25px #ffffff, 0px 0px 25px #ffffff, 0px 0px 25px #ffffff, 0px 0px 25px #ffffff;
+}
+
+.shop {
+  font-family: PTMonoBold;
+  font-size: 17px;
+}
+
+@media (min-width: 541px) and (max-width: 821px) {
+  .logoContainer {
+    height: 56%;
+    line-height: 0px;
+  }
+  .logo {
+    font-size: 11vh;
+    line-height: 70px;
+    padding-bottom: 5vh;
+  }
+  .slogan {
+    font-size: 2vh;
+    padding-top: 5vh;
+    padding-left: 150px;
+    padding-right: 150px;
+  }
+  .shopContainer {
+    top: 68.2%;
+  }
+  .shop {
+    font-size: 1.9vh;
+  }
+}
+
+@media (min-width: 300px) and (max-width: 540px) {
+  .logoContainer {
+    height: 59%;
+    line-height: 0px;
+  }
+  .logo {
+    font-size: 12vh;
+    line-height: 70px;
+    padding-bottom: 8vh;
+  }
+  .slogan {
+    font-size: 2.3vh;
+    padding-top: 35px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .shopContainer {
+    top: 68%;
+  }
+  .shop {
+    font-size: 2vh;
+  }
+  .video {
+    bottom: 5%;
+  }
+  .textContainer {
+    bottom: 5%;
+  }
+}
+
+@media (max-width: 299px) {
+  .logoContainer {
+    height: 60%;
+    line-height: 0px;
+  }
+  .logo {
+    font-size: 29vw;
+    line-height: 70px;
+    padding-bottom: 60px;
+  }
+  .slogan {
+    font-size: 5vw;
+    padding-top: 5vw;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .shopContainer {
+    top: 68%;
+  }
+  .shop {
+    font-size: 12px;
+  }
+  .video {
+    bottom: 5%;
+  }
+  .textContainer {
+    bottom: 5%;
+  }
+}
+
+@media (min-width: 821px) and (max-width: 1280px) {
+  .shopContainer {
+    top: 80%;
+  }
+  .shop {
+    font-size: 2vh;
+  }
+}
+
+@media (min-width: 1281px) {
+  .shopContainer {
+    top: 84.5%;
+  }
+  .shop {
+    font-size: 15px;
+  }
 }
