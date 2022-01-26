@@ -21,6 +21,7 @@
   align-items: center;
   display: flex;
   flex-direction: column;
+  z-index: 10;
 }
 
 .logoContainer {
