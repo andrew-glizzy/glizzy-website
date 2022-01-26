@@ -22,9 +22,6 @@ const Home = ({ mobilePosterUrl, desktopPosterUrl, mobileVideos, desktopVideos }
   // }, [screenDimensions])
 
   useEffect(() => {
-    // remove scrolling and rotation
-    document.body.style.overflow = "hidden";
-
     // get if on mobile for optimal loading
     const onMobile = window.innerWidth < MOBILE_WIDTH;
     setPosterUrl(onMobile ? mobilePosterUrl : desktopPosterUrl);
@@ -70,7 +67,7 @@ const Home = ({ mobilePosterUrl, desktopPosterUrl, mobileVideos, desktopVideos }
           return null;
         }}
       </Media>
-      <video
+      {/* <video
         autoPlay
         loop
         muted
@@ -82,7 +79,7 @@ const Home = ({ mobilePosterUrl, desktopPosterUrl, mobileVideos, desktopVideos }
         onLoadedData={() => setShowText(true)}
       >
         {videos && videos.map(v => <source src={v.video.url} type={v.contentType} key={v.video.url} />)}
-      </video>
+      </video> */}
       <div className={styles.textContainer}>
         <div className={styles.logoContainer}>
           <span className={styles.logo}>GLIZZY</span>
