@@ -24,7 +24,6 @@ const Home = ({ mobilePosterUrl, desktopPosterUrl, mobileVideos, desktopVideos }
   useEffect(() => {
     // remove scrolling and rotation
     document.body.style.overflow = "hidden";
-    // screen.orientation.lock("natural");
 
     // get if on mobile for optimal loading
     const onMobile = window.innerWidth < MOBILE_WIDTH;
@@ -84,21 +83,17 @@ const Home = ({ mobilePosterUrl, desktopPosterUrl, mobileVideos, desktopVideos }
       >
         {videos && videos.map(v => <source src={v.video.url} type={v.contentType} key={v.video.url} />)}
       </video>
-      {
-        showText && (
-          <div className={styles.textContainer}>
-            <div className={styles.logoContainer}>
-              <span className={styles.logo}>GLIZZY</span>
-            </div>
-            <div className={styles.sloganContainer}>
-              <span className={styles.slogan}>YOUR FAVORITE CREATORS IN THE PALM OF YOUR HAND.</span>
-            </div>
-            <div className={styles.shopContainer}>
-              <span className={styles.shop}>[ COMING SOON ]</span>
-            </div>
-          </div>
-        )
-      }
+      <div className={styles.textContainer}>
+        <div className={styles.logoContainer}>
+          <span className={styles.logo}>GLIZZY</span>
+        </div>
+        <div className={styles.sloganContainer}>
+          <span className={styles.slogan}>YOUR FAVORITE CREATORS IN THE PALM OF YOUR HAND.</span>
+        </div>
+        <div className={styles.shopContainer}>
+          <span className={styles.shop}>[ COMING SOON ]</span>
+        </div>
+      </div>
     </div>
   )
 }

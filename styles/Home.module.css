@@ -85,11 +85,11 @@
   }
   .logo {
     font-size: 11vh;
-    line-height: 70px;
+    line-height: 60px;
     padding-bottom: 5vh;
   }
   .slogan {
-    font-size: 2vh;
+    font-size: 3vh;
     padding-top: 5vh;
     padding-left: 150px;
     padding-right: 150px;
@@ -119,13 +119,14 @@
     padding-right: 15px;
   }
   .shopContainer {
-    top: 68%;
+    top: 70%;
   }
   .shop {
-    font-size: 2vh;
+    font-size: 1.8vh;
   }
   .video {
-    bottom: 5%;
+    bottom: 0%;
+    height: 110%;
   }
   .textContainer {
     bottom: 5%;
@@ -149,13 +150,14 @@
     padding-right: 15px;
   }
   .shopContainer {
-    top: 68%;
+    top: 70%;
   }
   .shop {
     font-size: 12px;
   }
   .video {
-    bottom: 5%;
+    bottom: 0%;
+    height: 110%;
   }
   .textContainer {
     bottom: 5%;
