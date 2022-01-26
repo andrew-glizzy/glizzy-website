@@ -24,7 +24,7 @@ const Home = ({ mobilePosterUrl, desktopPosterUrl, mobileVideos, desktopVideos }
   useEffect(() => {
     // remove scrolling and rotation
     document.body.style.overflow = "hidden";
-    screen.orientation.lock("natural");
+    // screen.orientation.lock("natural");
 
     // get if on mobile for optimal loading
     const onMobile = window.innerWidth < MOBILE_WIDTH;
