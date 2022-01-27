@@ -60,8 +60,13 @@
   vertical-align: top;
   font-family: GLIZZY;
   text-align: center;
-  text-shadow: 0px 0px 25px #ffffff, 0px 0px 25px #ffffff, 0px 0px 25px #ffffff;
+  text-shadow: 0px 0px 25px #faf8f6, 0px 0px 25px #faf8f6, 0px 0px 25px #faf8f6;
   padding-bottom: 50px;
+  --webkit-background-clip: padding-box;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -webkit-text-shadow: 0px 0px 25px #faf8f6, 0px 0px 25px #faf8f6, 0px 0px 25px #faf8f6;
 }
 
 .slogan {
@@ -71,7 +76,12 @@
   padding-top: 20px;
   padding-left: 10px;
   padding-right: 10px;
-  text-shadow: 0px 0px 20px #ffffff, 0px 0px 20px #ffffff, 0px 0px 20px #ffffff, 0px 0px 20px #ffffff;
+  text-shadow: 0px 0px 20px #faf8f6, 0px 0px 20px #faf8f6, 0px 0px 20px #faf8f6, 0px 0px 20px #faf8f6;
+  --webkit-background-clip: padding-box;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -webkit-text-shadow: 0px 0px 20px #faf8f6, 0px 0px 20px #faf8f6, 0px 0px 20px #faf8f6, 0px 0px 20px #faf8f6;
 }
 
 .shop {
