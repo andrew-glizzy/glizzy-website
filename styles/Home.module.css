@@ -21,7 +21,7 @@
   align-items: center;
   display: flex;
   flex-direction: column;
-  z-index: 10;
+  z-index: 5;
 }
 
 .logoContainer {
@@ -79,6 +79,49 @@
   font-size: 17px;
 }
 
+.footer {
+  display: flex;
+  position: absolute;
+  height: 7%;
+  width: 100%;
+  bottom: 0px;
+  padding-left: 13%;
+  padding-right: 13%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.copyrightContainer {
+  display: flex;
+}
+
+.copyrightIcon {
+  font-family: PTMonoBold;
+  color: gray;
+  padding-bottom: 20px;
+}
+
+.copyright {
+  font-family: PTMonoBold;
+  font-size: 13px;
+  color: gray;
+}
+
+.socialMediaContainer {
+  display: flex;
+  justify-content: space-around;
+}
+
+.socialMediaIcon {
+  color: gray;
+  z-index: 6;
+  padding-left: 4px;
+}
+
+.socialMediaIcon:hover {
+  opacity: 0.7;
+}
+
 @media (min-width: 541px) and (max-width: 914px) and (orientation: landscape) {
   .logoContainer {
     height: 56%;
@@ -128,6 +171,10 @@
   .shop {
     font-size: 15px;
   }
+  .footer {
+    padding-left: 10%;
+    padding-right: 10%;
+  }
 }
 
 @media (min-width: 300px) and (max-width: 540px) {
@@ -158,6 +205,10 @@
   }
   .textContainer {
     bottom: 5%;
+  }
+  .footer {
+    padding-left: 7%;
+    padding-right: 7%;
   }
 }
 
@@ -190,6 +241,18 @@
   }
   .textContainer {
     bottom: 4%;
+  }
+  .footer {
+    padding-left: 4%;
+    padding-right: 4%;
+    height: 1%;
+  }
+  .copyright {
+    font-size: 12px;
+    width: 50%;
+  }
+  .socialMediaIcon {
+    padding-left: 1px;
   }
 }
 

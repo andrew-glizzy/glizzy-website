@@ -2,6 +2,10 @@ import Head from 'next/head'
 import Media from "react-media";
 import { useEffect, useRef, useState } from "react";
 
+import TwitterIcon from "../assets/icons/twitter.svg";
+import InstagramIcon from "../assets/icons/instagram.svg";
+import TikTokIcon from "../assets/icons/tiktok.svg";
+
 import { MOBILE_WIDTH, colors } from "../utils/consts";
 import styles from '../styles/Home.module.css'
 import client, { frontPagePosterQuery, frontPageAnimationQuery } from "../utils/contentful";
@@ -12,12 +16,15 @@ const Home = ({ mobilePosterUrl, desktopPosterUrl, mobileVideos, desktopVideos }
   // TODO: only show videos if phone is not in low battery mode
   // TODO: remove arrow from video and use it as an image instead
 
+  const [isLowBatteryMode, setIsLowBatteryMode] = useState(false);
   const [posterUrl, setPosterUrl] = useState("");
   const [videos, setVideos] = useState(null);
   const [isMobile, setIsMobile] = useState(null);
   const videoRef = useRef({});
 
   useEffect(() => {
+    // determine if low battery mode
+
     // remove scrolling and rotation
     document.body.style.overflow = "hidden";
   
@@ -94,6 +101,22 @@ const Home = ({ mobilePosterUrl, desktopPosterUrl, mobileVideos, desktopVideos }
         </div>
       </div>
       <div></div>
+      <div className={styles.footer}>
+        <div className={styles.copyrightContainer}>
+          <span className={styles.copyright}>{"\u00A92022 GLIZZY LABS LLC"}</span>
+        </div>
+        <div className={styles.socialMediaContainer}>
+          <a href="https://twitter.com/getglizzy" className={styles.socialMediaIcon}>
+            <TwitterIcon fill={colors.SOCIALMEDIA} />
+          </a>
+          <a href="https://instagram.com/getglizzy" className={styles.socialMediaIcon} >
+            <InstagramIcon fill={colors.SOCIALMEDIA} />
+          </a>
+          <a href="https://www.tiktok.com/@glizzylabs" className={styles.socialMediaIcon} >
+            <TikTokIcon fill={colors.SOCIALMEDIA} />
+          </a>
+        </div>
+      </div>
     </div>
   )
 }
