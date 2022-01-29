@@ -19,6 +19,7 @@ const Home = ({ mobilePosterUrl, desktopPosterUrl, mobileVideos, desktopVideos }
   const [posterUrl, setPosterUrl] = useState("");
   const [videos, setVideos] = useState(null);
   const [isMobile, setIsMobile] = useState(null);
+  const [isSuspended, setIsSuspended] = useState(false);
   const videoRef = useRef({});
 
   useEffect(() => {
@@ -40,6 +41,12 @@ const Home = ({ mobilePosterUrl, desktopPosterUrl, mobileVideos, desktopVideos }
     setPosterUrl(isMobile ? mobilePosterUrl : desktopPosterUrl);
     videoRef.current?.load();
   }, [isMobile]);
+
+  useEffect(() => {
+    if (isSuspended) {
+      videoRef.current?.play();
+    }
+  }, [isSuspended])
 
   return (
     <div style={{ backgroundColor: colors.BACKGROUND }} className={styles.container}>
@@ -79,12 +86,14 @@ const Home = ({ mobilePosterUrl, desktopPosterUrl, mobileVideos, desktopVideos }
         loop
         muted
         playsInline
-        constrols={false}
+        webkit-playsinline="true"
+        controls={false}
         className={styles.video}
         width="100%"
         height="100%"
         ref={videoRef}
         id="bg-animation"
+        onSuspendCapture={() => setIsSuspended(true)}
       >
         {videos && videos.map(v => <source src={v.video.url} type={v.contentType} key={v.video.url} />)}
       </video>
