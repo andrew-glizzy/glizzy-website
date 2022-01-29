@@ -19,7 +19,7 @@ const Home = ({ mobilePosterUrl, desktopPosterUrl, mobileVideos, desktopVideos }
   const [posterUrl, setPosterUrl] = useState("");
   const [videos, setVideos] = useState(null);
   const [isMobile, setIsMobile] = useState(null);
-  const [isPlaying, setIsPlaying] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
   const videoRef = useRef({});
 
   useEffect(() => {
