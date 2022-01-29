@@ -77,16 +77,15 @@ const Home = ({ mobilePosterUrl, desktopPosterUrl, mobileVideos, desktopVideos }
       </Media>
       <video
         autoPlay
-        loop
         muted
         playsInline
-        webkit-playsinline="true"
         width="0%"
         height="0%"
-        style={{ position: "absolute", zIndex: -100, opacity: 0 , top: 99999 }}
+        style={{ position: "absolute", zIndex: -100, opacity: 0, top: 99999 }}
         onSuspendCapture={() => setIsPlaying(false)}
         onPlayCapture={() => setIsPlaying(true)}
       >
+        <source src="videos/placeholder.mp4" type="video/mp4" key="placeholder" />
       </video>
       {
         isPlaying ? (
@@ -103,7 +102,13 @@ const Home = ({ mobilePosterUrl, desktopPosterUrl, mobileVideos, desktopVideos }
             {videos && videos.map(v => <source src={v.video.url} type={v.contentType} key={v.video.url} />)}
           </video>
         ) : (
-          <img src={posterUrl} width="100%" height="100%" className={styles.video} />
+          <img
+            src={posterUrl}
+            width="100%"
+            height="100%"
+            className={styles.video}
+            alt="polaroid animation thumbnail"
+          />
         )
       }
       <div></div>
