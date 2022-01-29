@@ -87,21 +87,21 @@ const Home = ({ mobilePosterUrl, desktopPosterUrl, mobileVideos, desktopVideos }
       >
         <source src="videos/placeholder.mp4" type="video/mp4" key="placeholder" />
       </video>
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className={styles.video}
+        width="100%"
+        height="100%"
+        ref={videoRef}
+        onPlayCapture={() => setIsPlaying(true)}
+      >
+        {videos && videos.map(v => <source src={v.video.url} type={v.contentType} key={v.video.url} />)}
+      </video>
       {
-        isPlaying ? (
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className={styles.video}
-            width="100%"
-            height="100%"
-            ref={videoRef}
-          >
-            {videos && videos.map(v => <source src={v.video.url} type={v.contentType} key={v.video.url} />)}
-          </video>
-        ) : (
+        !isPlaying && (
           <img
             src={posterUrl}
             width="100%"
