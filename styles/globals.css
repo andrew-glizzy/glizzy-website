@@ -40,3 +40,11 @@ a {
   font-weight: 914;
   font-display: block;
 }
+
+video::-webkit-media-controls-start-playback-button {
+  display: none;
+}
+
+video::-webkit-media-controls-overlay-play-button {
+  display: none;
+}

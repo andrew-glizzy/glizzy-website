@@ -16,15 +16,12 @@ const Home = ({ mobilePosterUrl, desktopPosterUrl, mobileVideos, desktopVideos }
   // TODO: only show videos if phone is not in low battery mode
   // TODO: remove arrow from video and use it as an image instead
 
-  const [isLowBatteryMode, setIsLowBatteryMode] = useState(false);
   const [posterUrl, setPosterUrl] = useState("");
   const [videos, setVideos] = useState(null);
   const [isMobile, setIsMobile] = useState(null);
   const videoRef = useRef({});
 
   useEffect(() => {
-    // determine if low battery mode
-
     // remove scrolling and rotation
     document.body.style.overflow = "hidden";
   
@@ -40,6 +37,7 @@ const Home = ({ mobilePosterUrl, desktopPosterUrl, mobileVideos, desktopVideos }
       return;
     }
     setVideos(isMobile ? mobileVideos : desktopVideos);
+    setPosterUrl(isMobile ? mobilePosterUrl : desktopPosterUrl);
     videoRef.current?.load();
   }, [isMobile]);
 
