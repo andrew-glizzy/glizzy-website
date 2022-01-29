@@ -79,6 +79,7 @@ const Home = ({ mobilePosterUrl, desktopPosterUrl, mobileVideos, desktopVideos }
         loop
         muted
         playsInline
+        constrols={false}
         className={styles.video}
         width="100%"
         height="100%"

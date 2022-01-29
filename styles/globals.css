@@ -48,3 +48,8 @@ video::-webkit-media-controls-start-playback-button {
 video::-webkit-media-controls-overlay-play-button {
   display: none;
 }
+
+video::-webkit-media-controls {
+  display:none !important;
+  top: 9999px;
+}
