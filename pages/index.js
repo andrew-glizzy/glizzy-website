@@ -84,6 +84,7 @@ const Home = ({ mobilePosterUrl, desktopPosterUrl, mobileVideos, desktopVideos }
         width="100%"
         height="100%"
         ref={videoRef}
+        id="bg-animation"
       >
         {videos && videos.map(v => <source src={v.video.url} type={v.contentType} key={v.video.url} />)}
       </video>
