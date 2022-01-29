@@ -81,19 +81,31 @@ const Home = ({ mobilePosterUrl, desktopPosterUrl, mobileVideos, desktopVideos }
         muted
         playsInline
         webkit-playsinline="true"
-        controls={false}
-        className={styles.video}
-        width="100%"
-        height="100%"
-        ref={videoRef}
-        id="bg-animation"
-        style={{ opacity: isPlaying ? 1 : 0 }}
+        width="0%"
+        height="0%"
+        style={{ position: "absolute", zIndex: -100, opacity: 0 , top: 99999 }}
         onSuspendCapture={() => setIsPlaying(false)}
         onPlayCapture={() => setIsPlaying(true)}
       >
-        {videos && videos.map(v => <source src={v.video.url} type={v.contentType} key={v.video.url} />)}
       </video>
-      { !isPlaying &&  <img src={posterUrl} width="100%" height="100%" className={styles.video} />}
+      {
+        isPlaying ? (
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className={styles.video}
+            width="100%"
+            height="100%"
+            ref={videoRef}
+          >
+            {videos && videos.map(v => <source src={v.video.url} type={v.contentType} key={v.video.url} />)}
+          </video>
+        ) : (
+          <img src={posterUrl} width="100%" height="100%" className={styles.video} />
+        )
+      }
       <div></div>
       <div className={styles.textContainer}>
         <div className={styles.logoContainer}>
