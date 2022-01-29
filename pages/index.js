@@ -75,7 +75,7 @@ const Home = ({ mobilePosterUrl, desktopPosterUrl, mobileVideos, desktopVideos }
           return null;
         }}
       </Media>
-      <video
+      {/* <video
         autoPlay
         muted
         playsInline
@@ -86,7 +86,7 @@ const Home = ({ mobilePosterUrl, desktopPosterUrl, mobileVideos, desktopVideos }
         onPlayCapture={() => setIsPlaying(true)}
       >
         <source src="videos/placeholder.mp4" type="video/mp4" key="placeholder" />
-      </video>
+      </video> */}
       <video
         autoPlay
         loop
@@ -96,21 +96,20 @@ const Home = ({ mobilePosterUrl, desktopPosterUrl, mobileVideos, desktopVideos }
         width="100%"
         height="100%"
         ref={videoRef}
+        style={{ zIndex: isPlaying ? -1 : -100 }}
+        onSuspendCapture={() => setIsPlaying(false)}
         onPlayCapture={() => setIsPlaying(true)}
       >
         {videos && videos.map(v => <source src={v.video.url} type={v.contentType} key={v.video.url} />)}
       </video>
-      {
-        !isPlaying && (
-          <img
-            src={posterUrl}
-            width="100%"
-            height="100%"
-            className={styles.video}
-            alt="polaroid animation thumbnail"
-          />
-        )
-      }
+      <img
+        src={posterUrl}
+        width="100%"
+        height="100%"
+        style={{ zIndex: isPlaying ? -100 : 0 }}
+        className={styles.video}
+        alt="polaroid animation thumbnail"
+      />
       <div></div>
       <div className={styles.textContainer}>
         <div className={styles.logoContainer}>
