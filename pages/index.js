@@ -19,7 +19,7 @@ const Home = ({ mobilePosterUrl, desktopPosterUrl, mobileVideos, desktopVideos }
   const [posterUrl, setPosterUrl] = useState("");
   const [videos, setVideos] = useState(null);
   const [isMobile, setIsMobile] = useState(null);
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
   const videoRef = useRef({});
 
   useEffect(() => {
@@ -87,6 +87,8 @@ const Home = ({ mobilePosterUrl, desktopPosterUrl, mobileVideos, desktopVideos }
         height="100%"
         ref={videoRef}
         id="bg-animation"
+        style={{ opacity: isPlaying ? 1 : 0 }}
+        onSuspendCapture={() => setIsPlaying(false)}
         onPlayCapture={() => setIsPlaying(true)}
       >
         {videos && videos.map(v => <source src={v.video.url} type={v.contentType} key={v.video.url} />)}
