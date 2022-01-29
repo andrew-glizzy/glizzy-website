@@ -19,7 +19,7 @@ const Home = ({ mobilePosterUrl, desktopPosterUrl, mobileVideos, desktopVideos }
   const [posterUrl, setPosterUrl] = useState("");
   const [videos, setVideos] = useState(null);
   const [isMobile, setIsMobile] = useState(null);
-  const [isSuspended, setIsSuspended] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
   const videoRef = useRef({});
 
   useEffect(() => {
@@ -41,12 +41,6 @@ const Home = ({ mobilePosterUrl, desktopPosterUrl, mobileVideos, desktopVideos }
     setPosterUrl(isMobile ? mobilePosterUrl : desktopPosterUrl);
     videoRef.current?.load();
   }, [isMobile]);
-
-  useEffect(() => {
-    if (isSuspended) {
-      videoRef.current?.play();
-    }
-  }, [isSuspended])
 
   return (
     <div style={{ backgroundColor: colors.BACKGROUND }} className={styles.container}>
@@ -93,10 +87,11 @@ const Home = ({ mobilePosterUrl, desktopPosterUrl, mobileVideos, desktopVideos }
         height="100%"
         ref={videoRef}
         id="bg-animation"
-        onSuspendCapture={() => setIsSuspended(true)}
+        onPlayCapture={() => setIsPlaying(true)}
       >
         {videos && videos.map(v => <source src={v.video.url} type={v.contentType} key={v.video.url} />)}
       </video>
+      { !isPlaying &&  <img src={posterUrl} width="100%" height="100%" className={styles.video} />}
       <div></div>
       <div className={styles.textContainer}>
         <div className={styles.logoContainer}>
