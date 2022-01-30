@@ -134,16 +134,16 @@
 
 @media (min-width: 541px) and (max-width: 914px) and (orientation: landscape) {
   .logoContainer {
-    height: 53%;
+    height: 55%;
     line-height: 0px;
   }
   .logo {
-    font-size: 95px;
+    font-size: 90px;
     line-height: 60px;
     padding-bottom: 35px;
   }
   .slogan {
-    font-size: 16px;
+    font-size: 14px;
     padding-top: 12px;
     padding-left: 120px;
     padding-right: 120px;
@@ -152,7 +152,10 @@
     bottom: 10%;
   }
   .shop {
-    font-size: 15px;
+    font-size: 13px;
+  }
+  .footer {
+    bottom: 8px;
   }
 }
 
@@ -189,9 +192,14 @@
     padding-left: 10%;
     padding-right: 10%;
   }
+  .video {
+    bottom: -7%;
+    height: 120%;
+    margin-left: 10px;
+  }
 }
 
-@media (min-width: 300px) and (max-width: 540px) {
+@media (min-width: 300px) and (max-width: 540px) and (orientation: portrait) {
   .logoContainer {
     height: 59%;
     line-height: 0px;
@@ -211,11 +219,12 @@
     bottom: 0%;
   }
   .shop {
-    font-size: 13px;
+    font-size: 15px;
   }
   .video {
-    bottom: 0%;
-    height: 110%;
+    bottom: -5%;
+    height: 120%;
+    margin-left: 7px;
   }
   .textContainer {
     bottom: 5%;
@@ -253,8 +262,9 @@
     font-size: 12px;
   }
   .video {
-    bottom: 0%;
-    height: 110%;
+    bottom: -5%;
+    height: 120%;
+    margin-left: 5px;
   }
   .textContainer {
     bottom: 4%;
@@ -273,20 +283,11 @@
   }
 }
 
-@media (min-width: 915px) and (max-width: 1280px) {
-  .shopContainer {
-    top: 80%;
-  }
-  .shop {
-    font-size: 2vh;
-  }
-}
-
-@media (min-width: 1281px) {
+/* @media (min-width: 1281px) {
   .shopContainer {
     top: 84.5%;
   }
   .shop {
     font-size: 15px;
   }
-}
+} */

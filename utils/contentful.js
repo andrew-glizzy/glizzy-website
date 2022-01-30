@@ -47,4 +47,20 @@ export const frontPageAnimationQuery = gql`
         }
     }  
 `
+
+export const frontPageSketchQuery = gql`
+    query {
+        frontPageBgSketchCollection {
+            items {
+                title
+                isMobile
+                contentType
+                image {
+                    url
+                }
+            }
+        }
+    }
+`
+
 export default client;

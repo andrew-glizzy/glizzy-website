@@ -8,15 +8,23 @@ import TikTokIcon from "../assets/icons/tiktok.svg";
 
 import { MOBILE_WIDTH, colors } from "../utils/consts";
 import styles from '../styles/Home.module.css'
-import client, { frontPagePosterQuery, frontPageAnimationQuery } from "../utils/contentful";
+import client, { frontPagePosterQuery, frontPageAnimationQuery, frontPageSketchQuery } from "../utils/contentful";
 
 
-const Home = ({ mobilePosterUrl, desktopPosterUrl, mobileVideos, desktopVideos }) => {
+const Home = ({ 
+  mobilePosterUrl,
+  desktopPosterUrl,
+  mobileVideos,
+  desktopVideos,
+  mobileSketchUrl,
+  desktopSketchUrl
+}) => {
   // TODO: figure out why the poster doesn't have the same coloring as the video
   // TODO: only show videos if phone is not in low battery mode
   // TODO: remove arrow from video and use it as an image instead
 
   const [posterUrl, setPosterUrl] = useState("");
+  const [sketchUrl, setSketchUrl] = useState("");
   const [videos, setVideos] = useState(null);
   const [isMobile, setIsMobile] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -31,6 +39,7 @@ const Home = ({ mobilePosterUrl, desktopPosterUrl, mobileVideos, desktopVideos }
     setIsMobile(onMobile);
     setPosterUrl(onMobile ? mobilePosterUrl : desktopPosterUrl);
     setVideos(onMobile ? mobileVideos : desktopVideos);
+    setSketchUrl(onMobile ? mobileSketchUrl : desktopSketchUrl);
   }, []);
 
   useEffect(() => {
@@ -39,6 +48,7 @@ const Home = ({ mobilePosterUrl, desktopPosterUrl, mobileVideos, desktopVideos }
     }
     setVideos(isMobile ? mobileVideos : desktopVideos);
     setPosterUrl(isMobile ? mobilePosterUrl : desktopPosterUrl);
+    setSketchUrl(isMobile ? mobileSketchUrl : desktopSketchUrl);
     videoRef.current?.load();
   }, [isMobile]);
 
@@ -75,23 +85,12 @@ const Home = ({ mobilePosterUrl, desktopPosterUrl, mobileVideos, desktopVideos }
           return null;
         }}
       </Media>
-      {/* <video
-        autoPlay
-        muted
-        playsInline
-        width="0%"
-        height="0%"
-        style={{ position: "absolute", zIndex: -100, opacity: 0, top: 99999 }}
-        onSuspendCapture={() => setIsPlaying(false)}
-        onPlayCapture={() => setIsPlaying(true)}
-      >
-        <source src="videos/placeholder.mp4" type="video/mp4" key="placeholder" />
-      </video> */}
       <video
         autoPlay
         loop
         muted
         playsInline
+        poster={posterUrl}
         className={styles.video}
         width="100%"
         height="100%"
@@ -103,12 +102,12 @@ const Home = ({ mobilePosterUrl, desktopPosterUrl, mobileVideos, desktopVideos }
         {videos && videos.map(v => <source src={v.video.url} type={v.contentType} key={v.video.url} />)}
       </video>
       <img
-        src={posterUrl}
+        src={sketchUrl}
         width="100%"
         height="100%"
-        style={{ zIndex: isPlaying ? -100 : 0 }}
         className={styles.video}
-        alt="polaroid animation thumbnail"
+        style={{ zIndex: 1 }}
+        alt="background sketches"
       />
       <div></div>
       <div className={styles.textContainer}>
@@ -160,12 +159,22 @@ export async function getStaticProps () {
     }
   } = await client.query({ query: frontPagePosterQuery });
 
+  const {
+    data: {
+      frontPageBgSketchCollection: {
+        items: sketchImages
+      }
+    }
+  } = await client.query({ query: frontPageSketchQuery });
+
   return {
     props: { 
       mobileVideos: videos.filter(v => v.isMobile === true),
       desktopVideos: videos.filter(v => v.isMobile === false),
       mobilePosterUrl: images.filter(img => img.isMobile === true)[0]?.image.url || null,
       desktopPosterUrl: images.filter(img => img.isMobile === false)[0]?.image.url || null,
+      mobileSketchUrl: sketchImages.filter(img => img.isMobile === true)[0]?.image.url || null,
+      desktopSketchUrl: sketchImages.filter(img => img.isMobile === false)[0]?.image.url || null,
     },
     revalidate: 600
   }
