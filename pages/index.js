@@ -110,7 +110,7 @@ const Home = ({
         height="100%"
         type="image/png"
         className={styles.video}
-        style={{ zIndex: 100 }}
+        style={{ zIndex: 1 }}
         alt="background sketches"
       />
       {/* {
