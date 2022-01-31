@@ -213,7 +213,7 @@
   .logo {
     font-size: 80px;
     line-height: 80px;
-    padding-bottom: 25px;
+    padding-bottom: 3vh;
   }
   .slogan {
     font-size: 17px;
@@ -288,12 +288,3 @@
     padding-left: 1px;
   }
 }
-
-/* @media (min-width: 1281px) {
-  .shopContainer {
-    top: 84.5%;
-  }
-  .shop {
-    font-size: 15px;
-  }
-} */
