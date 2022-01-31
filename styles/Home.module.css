@@ -207,13 +207,13 @@
 
 @media (min-width: 300px) and (max-width: 540px) {
   .logoContainer {
-    height: 59%;
+    height: 55%;
     line-height: 0px;
   }
   .logo {
     font-size: 80px;
-    line-height: 70px;
-    padding-bottom: 70px;
+    line-height: 80px;
+    padding-bottom: 25px;
   }
   .slogan {
     font-size: 17px;
@@ -228,8 +228,8 @@
     font-size: 15px;
   }
   .video {
-    bottom: -8%;
-    height: 125%;
+    bottom: -12%;
+    height: 132%;
     padding-left: 7px;
   }
   .textContainer {
