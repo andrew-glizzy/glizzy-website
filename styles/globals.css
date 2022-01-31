@@ -5,7 +5,9 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   min-width: 300px;
-  min-height: 914px;
+  min-height: 100%;
+  height: 100%;
+  overflow-x: hidden;
 }
 
 a {

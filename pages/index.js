@@ -7,6 +7,7 @@ import InstagramIcon from "../assets/icons/instagram.svg";
 import TikTokIcon from "../assets/icons/tiktok.svg";
 
 import { MOBILE_WIDTH, colors } from "../utils/consts";
+import { useScrollBlock } from '../utils/hooks';
 import styles from '../styles/Home.module.css'
 import client, { frontPagePosterQuery, frontPageAnimationQuery, frontPageSketchQuery } from "../utils/contentful";
 
@@ -27,12 +28,14 @@ const Home = ({
   const [sketchUrl, setSketchUrl] = useState("");
   const [videos, setVideos] = useState(null);
   const [isMobile, setIsMobile] = useState(null);
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
   const videoRef = useRef({});
+
+  const [blockScroll, allowScroll] = useScrollBlock();
 
   useEffect(() => {
     // remove scrolling and rotation
-    document.body.style.overflow = "hidden";
+    blockScroll();
   
     // get if on mobile for optimal loading
     const onMobile = window.innerWidth < MOBILE_WIDTH;
@@ -48,7 +51,7 @@ const Home = ({
     }
     setVideos(isMobile ? mobileVideos : desktopVideos);
     setPosterUrl(isMobile ? mobilePosterUrl : desktopPosterUrl);
-    setSketchUrl(isMobile ? mobileSketchUrl : desktopSketchUrl);
+    setSketchUrl(isMobile ? mobileSketchUrl: desktopSketchUrl);
     videoRef.current?.load();
   }, [isMobile]);
 
@@ -105,10 +108,23 @@ const Home = ({
         src={sketchUrl}
         width="100%"
         height="100%"
+        type="image/png"
         className={styles.video}
-        style={{ zIndex: 1 }}
+        style={{ zIndex: 100 }}
         alt="background sketches"
       />
+      {/* {
+        !isPlaying && (
+          <img
+            src={posterUrl}
+            width="100%"
+            height="100%"
+            className={styles.video}
+            style={{ zIndex: isPlaying ? -9999 : -1 }}
+            alt="background animation thumbnail"
+          />
+        )
+      } */}
       <div></div>
       <div className={styles.textContainer}>
         <div className={styles.logoContainer}>
@@ -173,8 +189,8 @@ export async function getStaticProps () {
       desktopVideos: videos.filter(v => v.isMobile === false),
       mobilePosterUrl: images.filter(img => img.isMobile === true)[0]?.image.url || null,
       desktopPosterUrl: images.filter(img => img.isMobile === false)[0]?.image.url || null,
-      mobileSketchUrl: sketchImages.filter(img => img.isMobile === true)[0]?.image.url || null,
-      desktopSketchUrl: sketchImages.filter(img => img.isMobile === false)[0]?.image.url || null,
+      mobileSketchUrl: sketchImages.filter(img => img.isMobile === true && img.contentType === "image/png")[0]?.image.url || null,
+      desktopSketchUrl: sketchImages.filter(img => img.isMobile === false && img.contentType === "image/png")[0]?.image.url || null,
     },
     revalidate: 600
   }
