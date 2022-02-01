@@ -24,45 +24,45 @@
   z-index: 5;
 }
 
+.mainTextContainer {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  margin-bottom: 8.5%;
+}
+
 .logoContainer {
   display: flex;
-  position: absolute;
-  top: 0;
   justify-content: center;
-  align-items: flex-end;
-  overflow: hidden;
-  height: 55%;
   width: 100%;
-  line-height: 60px;
   text-align: center;
   z-index: 3
 }
 
 .sloganContainer {
   display: flex;
-  position: absolute;
-  bottom: 0;
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-  height: 50%;
   z-index: 2;
 }
 
 .shopContainer {
   display: flex;
   position: absolute;
-  top: 84%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  bottom: 15vh;
 }
 
 .logo {
   display: inline-block;
-  font-size: 160px;
+  font-size: 20vh;
   vertical-align: top;
   font-family: GLIZZY;
   text-align: center;
   text-shadow: 0px 0px 15px #ffffff, 0px 0px 15px #ffffff, 0px 0px 15px #ffffff;
-  padding-bottom: 9.5vh;
   --webkit-background-clip: padding-box;
   appearance: none;
   -moz-appearance: none;
@@ -72,9 +72,8 @@
 
 .slogan {
   font-family: PTMonoBold;
-  font-size: 23px;
+  font-size: 2.7vh;
   text-align: center;
-  padding-top: 3vh;
   padding-left: 10px;
   padding-right: 10px;
   text-shadow: 0px 0px 12px #ffffff, 0px 0px 12px #ffffff, 0px 0px 12px #ffffff;
@@ -134,26 +133,16 @@
 }
 
 @media (min-width: 541px) and (max-width: 914px) and (orientation: landscape) {
-  .logoContainer {
-    height: 55%;
-    line-height: 0px;
-  }
   .logo {
     font-size: 90px;
-    line-height: 60px;
-    padding-bottom: 7vh;
   }
   .slogan {
-    font-size: 14px;
-    padding-top: 3vh;
+    font-size: 15px;
     padding-left: 120px;
     padding-right: 120px;
   }
-  .shopContainer {
-    bottom: 10%;
-  }
   .shop {
-    font-size: 13px;
+    font-size: 14px;
   }
   .footer {
     bottom: 8px;
@@ -161,39 +150,32 @@
   .video {
     height: 95%;
     width: 95%;
-    left: 2.5%;
-    top: 2.5%;
+    padding-left: 2.5%;
+    padding-top: 2.5%;
   }
 }
 
 @media (min-width: 541px) and (max-width: 914px) and (orientation: portrait) {
-  .logoContainer {
-    height: 55%;
-    line-height: 0px;
-  }
   .logo {
-    font-size: 110px;
-    line-height: 60px;
-    padding-bottom: 40px;
+    font-size: 14vw;
   }
   .slogan {
     font-size: 20px;
-    padding-top: 45px;
-    padding-left: 150px;
-    padding-right: 150px;
+    padding-left: 160px;
+    padding-right: 160px;
   }
   .video {
     bottom: 2%;
     height: 102%;
   }
-  .shopContainer {
-    bottom: 12%;
+  .mainTextContainer {
+    margin-bottom: 12%;
   }
-  .textContainer {
-    bottom: 5%;
+  .shopContainer {
+    bottom: 30vh;
   }
   .shop {
-    font-size: 15px;
+    font-size: 18px;
   }
   .footer {
     padding-left: 10%;
@@ -207,31 +189,24 @@
 }
 
 @media (min-width: 300px) and (max-width: 540px) {
-  .logoContainer {
-    height: 55%;
-    line-height: 0px;
-  }
   .logo {
     font-size: 80px;
-    line-height: 80px;
-    padding-bottom: 2.7vh;
   }
   .slogan {
     font-size: 17px;
-    padding-top: 2.5vh;
     padding-left: 20px;
     padding-right: 20px;
   }
   .shopContainer {
-    bottom: 0%;
+    bottom: 27vh;
   }
   .shop {
     font-size: 15px;
   }
   .video {
-    bottom: -14%;
+    bottom: -13%;
     height: 135%;
-    padding-left: 6vw;
+    padding-left: 4vw;
   }
   .textContainer {
     bottom: 4.5%;
@@ -243,23 +218,18 @@
 }
 
 @media (max-width: 299px) {
-  .logoContainer {
-    height: 60%;
-    line-height: 0px;
-  }
   .logo {
-    font-size: 25vw;
-    line-height: 70px;
-    padding-bottom: 10vh;
+    font-size: 29vw;
+    padding-right: 20px;
   }
   .slogan {
     font-size: 5vw;
-    padding-top: 5vw;
     padding-left: 0px;
-    padding-right: 0px;
+    padding-right: 20px;
   }
   .shopContainer {
-    bottom: 40%;
+    padding-right: 20px;
+    bottom: 27vh;
   }
   .shop {
     font-size: 12px;
@@ -267,14 +237,14 @@
   .video {
     bottom: -5%;
     height: 120%;
-    padding-left: 5vw;
   }
   .textContainer {
     bottom: 4%;
   }
   .footer {
-    padding-left: 4%;
-    padding-right: 4%;
+    padding-left: 20px;
+    padding-right: 40px;
+    padding-bottom: 5%;
   }
   .copyright {
     font-size: 12px;

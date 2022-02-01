@@ -59,7 +59,7 @@ const Home = ({
     <div style={{ backgroundColor: colors.BACKGROUND }} className={styles.container}>
       <Head>
         <title>GLIZZY</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, minimum-scale=1.0" />
         <meta name="description" content="Your favorite creators in the palm of your hand." />
         <meta name="theme-color" content={colors.BACKGROUND} />
         <link
@@ -127,15 +127,17 @@ const Home = ({
       } */}
       <div></div>
       <div className={styles.textContainer}>
-        <div className={styles.logoContainer}>
-          <span className={styles.logo}>GLIZZY</span>
+        <div className={styles.mainTextContainer}>
+          <div className={styles.logoContainer}>
+            <span className={styles.logo}>GLIZZY</span>
+          </div>
+          <div className={styles.sloganContainer}>
+            <span className={styles.slogan}>YOUR FAVORITE CREATORS IN THE PALM OF YOUR HAND.</span>
+          </div>
         </div>
-        <div className={styles.sloganContainer}>
-          <span className={styles.slogan}>YOUR FAVORITE CREATORS IN THE PALM OF YOUR HAND.</span>
-        </div>
-        <div className={styles.shopContainer}>
+      </div>
+      <div className={styles.shopContainer}>
           <span className={styles.shop}>[ COMING SOON ]</span>
-        </div>
       </div>
       <div></div>
       <div className={styles.footer}>
