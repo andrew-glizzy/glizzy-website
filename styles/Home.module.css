@@ -133,6 +133,9 @@
 }
 
 @media (min-width: 541px) and (max-width: 914px) and (orientation: landscape) {
+  .shopContainer {
+    bottom: 10vh;
+  }
   .logo {
     font-size: 90px;
   }
@@ -198,7 +201,7 @@
     padding-right: 20px;
   }
   .shopContainer {
-    bottom: 27vh;
+    bottom: 24vh;
   }
   .shop {
     font-size: 15px;
