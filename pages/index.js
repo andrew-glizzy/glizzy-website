@@ -1,4 +1,4 @@
-import Head from 'next/head'
+import Head from "next/head";
 import Media from "react-media";
 import { useEffect, useRef, useState } from "react";
 
@@ -104,15 +104,19 @@ const Home = ({
       >
         {videos && videos.map(v => <source src={v.video.url} type={v.contentType} key={v.video.url} />)}
       </video>
-      <img
-        src={sketchUrl}
-        width="100%"
-        height="100%"
-        type="image/png"
-        className={styles.video}
-        style={{ zIndex: 1 }}
-        alt="background sketches"
-      />
+      {
+        sketchUrl && (
+          <img
+            src={sketchUrl}
+            width="100%"
+            height="100%"
+            type="image/png"
+            className={styles.video}
+            style={{ zIndex: 1 }}
+            alt="sketches"
+          />
+        )
+      }
       {/* {
         !isPlaying && (
           <img
