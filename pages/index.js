@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Image from "next/image";
 import Media from "react-media";
 import { useEffect, useRef, useState } from "react";
 
@@ -9,7 +10,12 @@ import TikTokIcon from "../assets/icons/tiktok.svg";
 import { MOBILE_WIDTH, colors } from "../utils/consts";
 import { useScrollBlock } from '../utils/hooks';
 import styles from '../styles/Home.module.css'
-import client, { frontPagePosterQuery, frontPageAnimationQuery, frontPageSketchQuery } from "../utils/contentful";
+import client, {
+  frontPageArrowQuery,
+  frontPagePosterQuery,
+  frontPageAnimationQuery,
+  frontPageSketchQuery, }
+from "../utils/contentful";
 
 
 const Home = ({ 
@@ -18,11 +24,10 @@ const Home = ({
   mobileVideos,
   desktopVideos,
   mobileSketchUrl,
-  desktopSketchUrl
+  desktopSketchUrl,
+  arrowUrl,
 }) => {
-  // TODO: figure out why the poster doesn't have the same coloring as the video
   // TODO: only show videos if phone is not in low battery mode
-  // TODO: remove arrow from video and use it as an image instead
 
   const [posterUrl, setPosterUrl] = useState("");
   const [sketchUrl, setSketchUrl] = useState("");
@@ -141,7 +146,14 @@ const Home = ({
         </div>
       </div>
       <div className={styles.shopContainer}>
-          <span className={styles.shop}>[ COMING SOON ]</span>
+        <span className={styles.shop}>[ COMING SOON ]</span>
+        <img
+          src={arrowUrl}
+          width={100}
+          height={75}
+          alt="arrow sketch"
+          className={styles.arrow}
+        />
       </div>
       <div></div>
       <div className={styles.footer}>
@@ -189,6 +201,14 @@ export async function getStaticProps () {
     }
   } = await client.query({ query: frontPageSketchQuery });
 
+  const {
+    data: {
+      frontPageBgArrowCollection: {
+        items: arrowImages
+      }
+    }
+  } = await client.query({ query: frontPageArrowQuery });
+
   return {
     props: { 
       mobileVideos: videos.filter(v => v.isMobile === true),
@@ -197,6 +217,7 @@ export async function getStaticProps () {
       desktopPosterUrl: images.filter(img => img.isMobile === false)[0]?.image.url || null,
       mobileSketchUrl: sketchImages.filter(img => img.isMobile === true && img.contentType === "image/png")[0]?.image.url || null,
       desktopSketchUrl: sketchImages.filter(img => img.isMobile === false && img.contentType === "image/png")[0]?.image.url || null,
+      arrowUrl: arrowImages[0]?.image.url || null
     },
     revalidate: 600
   }

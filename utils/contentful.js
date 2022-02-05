@@ -63,4 +63,18 @@ export const frontPageSketchQuery = gql`
     }
 `
 
+export const frontPageArrowQuery = gql`
+    query {
+        frontPageBgArrowCollection {
+            items {
+                title
+                contentType
+                image {
+                    url
+                }
+            }
+        }
+    }
+`
+
 export default client;
