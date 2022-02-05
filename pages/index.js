@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Image from "next/image";
 import Media from "react-media";
 import { useEffect, useRef, useState } from "react";
 
@@ -34,6 +33,7 @@ const Home = ({
   const [videos, setVideos] = useState(null);
   const [isMobile, setIsMobile] = useState(null);
   const [isPlaying, setIsPlaying] = useState(true);
+  const [sketchLoaded, setSketchLoaded] = useState(false);
   const videoRef = useRef({});
 
   const [blockScroll, allowScroll] = useScrollBlock();
@@ -118,6 +118,7 @@ const Home = ({
             type="image/png"
             className={styles.video}
             style={{ zIndex: 1 }}
+            onLoad={() => setSketchLoaded(true)}
             alt="sketches"
           />
         )
@@ -147,13 +148,18 @@ const Home = ({
       </div>
       <div className={styles.shopContainer}>
         <span className={styles.shop}>[ COMING SOON ]</span>
-        <img
-          src={arrowUrl}
-          width={100}
-          height={75}
-          alt="arrow sketch"
-          className={styles.arrow}
-        />
+        {
+          arrowUrl && (
+            <img
+              src={arrowUrl}
+              width={100}
+              height={75}
+              alt="arrow sketch"
+              className={styles.arrow}
+              style={{ opacity: sketchLoaded ? 1 : 0 }}
+            />
+          )
+        }
       </div>
       <div></div>
       <div className={styles.footer}>
