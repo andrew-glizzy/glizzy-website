@@ -32,7 +32,6 @@ const Home = ({
   const [sketchUrl, setSketchUrl] = useState("");
   const [videos, setVideos] = useState(null);
   const [isMobile, setIsMobile] = useState(null);
-  const [isPlaying, setIsPlaying] = useState(true);
   const [sketchLoaded, setSketchLoaded] = useState(false);
   const videoRef = useRef({});
 
@@ -64,6 +63,10 @@ const Home = ({
     <div style={{ backgroundColor: colors.BACKGROUND }} className={styles.container}>
       <Head>
         <title>GLIZZY</title>
+        <link rel="preconnect" href="https://vitals.vercel-insights.com" />
+        <link rel="dns-prefetch" href="https://vitals.vercel-insights.com" />
+        <link rel="preconnect" href="https://images.ctfassets.net" />
+        <link rel="dns-prefetch" href="https://images.ctfassets.net" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
@@ -109,9 +112,6 @@ const Home = ({
         width="100%"
         height="100%"
         ref={videoRef}
-        style={{ zIndex: isPlaying ? -1 : -100 }}
-        onSuspendCapture={() => setIsPlaying(false)}
-        onPlayCapture={() => setIsPlaying(true)}
       >
         {videos && videos.map(v => <source src={v.video.url} type={v.contentType} key={v.video.url} />)}
       </video>
@@ -129,18 +129,6 @@ const Home = ({
           />
         )
       }
-      {/* {
-        !isPlaying && (
-          <img
-            src={posterUrl}
-            width="100%"
-            height="100%"
-            className={styles.video}
-            style={{ zIndex: isPlaying ? -9999 : -1 }}
-            alt="background animation thumbnail"
-          />
-        )
-      } */}
       <div></div>
       <div className={styles.textContainer}>
         <div className={styles.mainTextContainer}>
@@ -173,13 +161,13 @@ const Home = ({
           <span className={styles.copyright}>{"\u00A92022 GLIZZY LABS LLC"}</span>
         </div>
         <div className={styles.socialMediaContainer}>
-          <a href="https://twitter.com/getglizzy" className={styles.socialMediaIcon}>
+          <a href="https://twitter.com/getglizzy" className={styles.socialMediaIcon} title="Twitter">
             <TwitterIcon fill={colors.SOCIALMEDIA} />
           </a>
-          <a href="https://instagram.com/getglizzy" className={styles.socialMediaIcon} >
+          <a href="https://instagram.com/getglizzy" className={styles.socialMediaIcon} title="Instagram">
             <InstagramIcon fill={colors.SOCIALMEDIA} />
           </a>
-          <a href="https://www.tiktok.com/@glizzylabs" className={styles.socialMediaIcon} >
+          <a href="https://www.tiktok.com/@glizzylabs" className={styles.socialMediaIcon} title="TikTok">
             <TikTokIcon fill={colors.SOCIALMEDIA} />
           </a>
         </div>
