@@ -143,14 +143,13 @@ const Home = ({
       <div className={styles.shopContainer}>
         <span className={styles.shop}>[ COMING SOON ]</span>
         {
-          arrowUrl && (
+          arrowUrl && sketchLoaded && (
             <img
               src={arrowUrl}
               width={100}
               height={75}
               alt="arrow sketch"
               className={styles.arrow}
-              style={{ opacity: sketchLoaded ? 1 : 0 }}
             />
           )
         }
